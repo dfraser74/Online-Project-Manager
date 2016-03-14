@@ -1,3 +1,10 @@
+/.idea
+/src/.idea
+
+# ignore dev build
+/src/public/bundle.js
+/src/public/bundle.js.map
+
 # Logs
 logs
 *.log
@@ -31,3 +38,11 @@ node_modules
 
 # Optional REPL history
 .node_repl_history
+
+.idea/vcs.xml
+
+.idea/jsLibraryMappings.xml
+
+src/public/assets/css/materialize.min.css
+
+src/public/assets/js/materialize.min.js
