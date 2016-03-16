@@ -61,6 +61,8 @@ let Schema = (db) => {
             })
         })
 
-    })
-
+    });
+    return schema;
 };
+
+export default Schema;

@@ -10,7 +10,7 @@ module.exports = {
                 include: /app/, loader: 'babel-loader',
                 query: {
                     presets: ['react', 'es2015', 'stage-0'],
-                    plugins: ['./app/plugins/babelRelayPlugin']
+                    plugins: [__dirname+'/app/plugins/babelRelayPlugin']
                 }
             }
 

@@ -16,24 +16,24 @@ app.use(express.static(__dirname + '/../public'));
 (async ()=> {
 
     try {
-        let db = await MongoClient.connect(process.env.MONGO_URL);
-        let schema = Schema(db);
+            let db = await MongoClient.connect(process.env.MONGO_URL);
+            let schema = Schema(db);
 
-        app.use('/query', GraphQLHTTP({
-            schema,
-            graphiql: true
-        }));
+            app.use('/graphql', GraphQLHTTP({
+                schema,
+                graphiql: true
+            }));
 
-        app.listen(3000, ()=> console.log("listening on port 3000"));
+            app.listen(3000, ()=> console.log("listening on port 3000"));
 
-        let jsonschema = await graphql(schema, introspectionQuery);
-        fs.writeFile('./app/data/schema.json', JSON.stringify(jsonschema, null, 2), err => {
-            if (err) throw err;
+            let jsonschema = await graphql(schema, introspectionQuery);
+            fs.writeFile('./app/data/schema.json', JSON.stringify(jsonschema, null, 2), err => {
+                if (err) throw err;
 
-            console.log("parsing JSON schema");
-        })
+                console.log("parsing JSON schema");
+            })
 
-    } catch(e) {
-        console.log(e);
-    }
+        } catch(e) {
+            console.log(e);
+        }
 })();
