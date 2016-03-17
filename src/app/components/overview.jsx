@@ -5,7 +5,7 @@ import Relay from 'react-relay';
 class Overview extends React.Component {
 
     render() {
-
+            console.log(this.props.overview.title);
         return(
             <div className="row" style={{margin:"25px"}}>
                 <form className="col s12">
@@ -14,6 +14,7 @@ class Overview extends React.Component {
                         <div className="input-field col s12" style={{marginBottom:"25px"}}>
                             <input id="overview_title" type="text" className="truncate"> </input>
                                 <label htmlFor="overview_title" >Title</label>
+                            <h3>{this.props.overview.exec}</h3>
                         </div>
                         <div className="input-field col s12" style={{marginBottom:"25px"}}>
                             <input id="overview_description" type="text" className="truncate"> </input>
@@ -67,8 +68,8 @@ Overview = Relay.createContainer(Overview, {
             exec,
             title
        }
-       `,
-    },
+       `
+    }
 });
 
 export default Overview;

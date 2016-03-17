@@ -7,10 +7,10 @@ class HomeRoute extends Relay.Route {
     static routeName = 'Home';
     static queries = {
         store: (Component)=> Relay.QL`
-        query MainQuery {
+        query Query {
             store { ${Component.getFragment('store')} }
         }
-        `,
+        `
     };
 
 }

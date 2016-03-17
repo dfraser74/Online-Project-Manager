@@ -25,6 +25,7 @@ let Schema = (db) => {
     class Store {}
     let store = new Store();
 
+
     let storeType = new GraphQLObjectType({
         name: 'Store',
         fields: () => ({
@@ -37,7 +38,7 @@ let Schema = (db) => {
 
     let overviewType = new GraphQLObjectType({
         name: 'Overview',
-        fields: ()=> ({
+        fields: () => ({
             _id: { type: GraphQLString },
             title: { type: GraphQLString },
             description: { type: GraphQLString },
@@ -53,7 +54,7 @@ let Schema = (db) => {
     let schema = new GraphQLSchema({
         query: new GraphQLObjectType({
             name: 'Query',
-            fields: ()=> ({
+            fields: () => ({
                 store: {
                     type: storeType,
                     resolve: () => store
