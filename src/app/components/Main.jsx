@@ -18,6 +18,7 @@ class Main extends React.Component {
                 <div className="row" style={{marginBottom:"0"}}>
 
                     <div className="col s3">
+
                         <SideMenu />
                     </div>
                     <div className="col s9" style={{boxShadow: "0 0 15px 0px rgba(0, 0, 0, 0.14)", height:"100%", marginBottom:"0", paddingBottom:"0"}}>

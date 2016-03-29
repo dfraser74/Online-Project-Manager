@@ -51,6 +51,25 @@ let Schema = (db) => {
         })
     });
 
+    let createOverviewMutation = mutationWithClientMutationId({
+        name: 'CreateOverview',
+
+        inputFields:{
+            exec: { type: new GraphQLNonNull(GraphQLString)}
+        },
+
+        outputFields: {
+            overview:{
+                type: overviewType,
+                resolve: (obj) => obj.ops[0]
+            }
+        },
+
+        mutateAndGetPayload: ({exec}) => {
+            return db.collection("overviewdata").insertOne({exec});
+        }
+    });
+
     let schema = new GraphQLSchema({
         query: new GraphQLObjectType({
             name: 'Query',
@@ -59,6 +78,13 @@ let Schema = (db) => {
                     type: storeType,
                     resolve: () => store
                 }
+            })
+        }),
+
+        mutation: new GraphQLObjectType({
+            name: 'Mutation',
+            fields: ()=> ({
+                createOverview: createOverviewMutation
             })
         })
 
