@@ -1,20 +1,27 @@
 import React from 'react';
 import Relay from 'react-relay';
 import CreateOverviewMutation from '../mutations/CreateOverviewMutation';
-
+import {debounce} from "lodash";
 
 
 class Overview extends React.Component {
 
+    constructor(props){
+        super(props);
+
+        this.handleChange= debounce(this.handleChange, 2000);
+    }
+
     handleChange = (e) => {
         e.preventDefault();
+
         Relay.Store.commitUpdate(
             new CreateOverviewMutation({
                 overview: this.props.overview,
                 exec: this.refs.newExec.value,
             })
         );
-        //this.refs.newExec.value='';
+
     }
 
     render() {
