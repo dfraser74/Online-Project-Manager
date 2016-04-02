@@ -2,6 +2,8 @@ import React from 'react';
 import Relay from 'react-relay';
 import CreateOverviewMutation from '../mutations/CreateOverviewMutation';
 import {debounce} from "lodash";
+import CSSModules from "react-css-modules";
+import OverviewCSS from "../css/overview.css";
 
 
 class Overview extends React.Component {
@@ -9,7 +11,7 @@ class Overview extends React.Component {
     constructor(props){
         super(props);
 
-        this.handleChange= debounce(this.handleChange, 2000);
+       // this.handleChange= debounce(this.handleChange, 2000);
     }
 
     handleChange = (e) => {
@@ -27,13 +29,13 @@ class Overview extends React.Component {
     render() {
 
         return(
-            <div className="row" style={{margin:"25px"}}>
+            <div className="row" styleName="viewContent">
                 <form className="col s12">
                     <div className="row">
 
 
                         <div className="input-field col s12" style={{marginBottom:"25px"}}>
-                            <input id="overview_title" type="text" className="truncate" placeholder={this.props.overview.exec} ref="newExec" onChange={this.handleChange} />
+                            <input id="overview_title" type="text" className="truncate" defaultValue={this.props.overview.exec} ref="newExec" onBlur={this.handleChange} />
                                 <label htmlFor="overview_title" className="active">Title</label>
 
                         </div>
@@ -84,6 +86,9 @@ class Overview extends React.Component {
             );
     }
 }
+
+Overview = CSSModules(Overview, OverviewCSS);
+
 
 Overview = Relay.createContainer(Overview, {
     fragments: {

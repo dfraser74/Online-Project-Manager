@@ -1,19 +1,25 @@
 import React from "react";
+import CSSModules from "react-css-modules";
+import SideMenuCSS from "../css/sideMenu.css";
 
 class SideMenu extends React.Component {
     render() {
         return (
 
                 <div>
-                    <a className="btn blue-grey lighten-5 waves-effect waves-ripple z-depth-3 black-text" style={{display: "block", margin: "50px 0 0 0", paddingRight:"60px", borderRadius:"7px"}}><i className="material-icons left">fast_rewind</i>Menu</a>
-                    <a className="btn blue-grey lighten-5 waves-effect waves-ripple z-depth-3 center-align black-text" style={{display: "block", margin: "25px 0 0 0", borderRadius:"7px"}}>Overview</a>
-                    <a className="btn blue-grey lighten-5 waves-effect waves-ripple z-depth-3 center-align black-text" style={{display: "block", margin: "5px 0 0 0", borderRadius:"7px"}}>Control List</a>
-                    <a className="btn blue-grey lighten-5 waves-effect waves-ripple z-depth-3 center-align black-text" style={{display: "block", margin: "5px 0 0 0", borderRadius:"7px"}}>Issues</a>
+                    <ul id="sideNav" className="side-nav fixed blue lighten-5" styleName="sideNav">
+                        <li><a href="#" styleName="menuItem"><i className="material-icons left" styleName="menuIcon">fast_rewind</i>Menu</a></li>
+                        <li><a className="center-align" >Overview</a></li>
+                        <li><a className="center-align" >Control List</a></li>
+                        <li><a className="center-align" >Issues</a></li>
+                    </ul>
                 </div>
 
         );
     }
 }
+
+SideMenu = CSSModules(SideMenu, SideMenuCSS);
 
 export default SideMenu;
 
