@@ -13,7 +13,7 @@ class Main extends React.Component {
             <div>
                 <div className="navbar-fixed">
                     <nav>
-                        <div className="nav-wrapper indigo lighten-2">
+                        <div className="nav-wrapper grey darken-1">
                             <a href="#" className="brand-logo" styleName='brandLogo'>Auff-line Projeck Manager</a>
                         </div>
                     </nav>
@@ -23,6 +23,7 @@ class Main extends React.Component {
                     <SideMenu />
                 </div>
                 <div>
+
                     <Overview overview={this.props.store.overview[0]} />
                 </div>
 

@@ -29,10 +29,11 @@ class Overview extends React.Component {
     render() {
 
         return(
+
             <div className="row" styleName="viewContent">
                 <form className="col s12">
                     <div className="row">
-
+                        {this.props.children}
 
                         <div className="input-field col s12" style={{marginBottom:"25px"}}>
                             <input id="overview_title" type="text" className="truncate" defaultValue={this.props.overview.exec} ref="newExec" onBlur={this.handleChange} />
@@ -83,6 +84,7 @@ class Overview extends React.Component {
                     </div>
                 </form>
             </div>
+
             );
     }
 }

@@ -1,6 +1,7 @@
 .sideNav {
     margin-top: 65px;
     padding-top: 65px;
+    font-weight: bold;
 }
 
 .menuIcon {
@@ -9,4 +10,6 @@
 
 .menuItem {
     margin-left: 30px;
+
 }
+
