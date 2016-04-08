@@ -1,21 +1,47 @@
 import React from 'react';
 import Relay from 'react-relay';
+import CreateOverviewMutation from '../mutations/CreateOverviewMutation';
+import {debounce} from "lodash";
+import CSSModules from "react-css-modules";
+import OverviewCSS from "../css/overview.css";
 
 
 class Overview extends React.Component {
 
+    constructor(props){
+        super(props);
+
+       // this.handleChange= debounce(this.handleChange, 2000);
+    }
+
+    handleChange = (e) => {
+        e.preventDefault();
+
+        Relay.Store.commitUpdate(
+            new CreateOverviewMutation({
+                overview: this.props.overview,
+                exec: this.refs.newExec.value,
+            })
+        );
+
+    }
+
     render() {
-            console.log(this.props.overview.title);
+
         return(
-            <div className="row" style={{margin:"25px"}}>
+            <div className="row" styleName="viewContent">
                 <form className="col s12">
                     <div className="row">
 
+
                         <div className="input-field col s12" style={{marginBottom:"25px"}}>
-                            <input id="overview_title" type="text" className="truncate"> </input>
-                                <label htmlFor="overview_title" >Title</label>
-                            <h3>{this.props.overview.exec}</h3>
+                            <input id="overview_title" type="text" className="truncate" defaultValue={this.props.overview.exec} ref="newExec" onBlur={this.handleChange} />
+                                <label htmlFor="overview_title" className="active">Title</label>
+
                         </div>
+
+
+
                         <div className="input-field col s12" style={{marginBottom:"25px"}}>
                             <input id="overview_description" type="text" className="truncate"> </input>
                             <label htmlFor="overview_description" >Description</label>
@@ -60,6 +86,9 @@ class Overview extends React.Component {
             );
     }
 }
+
+Overview = CSSModules(Overview, OverviewCSS);
+
 
 Overview = Relay.createContainer(Overview, {
     fragments: {
