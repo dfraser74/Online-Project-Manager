@@ -24,6 +24,11 @@ import {
 let Schema = (db) => {
     class Store {}
     let store = new Store();
+    let OVT = {
+        _id: "test",
+        title: "test2",
+        exec: "test3"
+    };
 
 
     let storeType = new GraphQLObjectType({
@@ -51,6 +56,18 @@ let Schema = (db) => {
         })
     });
 
+    let issueType = new GraphQLObjectType({
+       name: 'Issues',
+        fields: () => ({
+            _id: { type: GraphQLString },
+            issueName: { type: GraphQLString },
+            impact: { type: GraphQLString },
+            impVal: { type: GraphQLString },
+            severity: { type: GraphQLString },
+            sevVal: { type: GraphQLString },
+        })
+    });
+
     let createOverviewMutation = mutationWithClientMutationId({
         name: 'CreateOverview',
 
@@ -74,12 +91,23 @@ let Schema = (db) => {
         query: new GraphQLObjectType({
             name: 'Query',
             fields: () => ({
+
+                overview: {
+                    type: overviewType,
+                    resolve: () =>  db.collection("overviewdata").findOne({})
+
+                },
                 store: {
                     type: storeType,
                     resolve: () => store
+                },
+                issues: {
+                    type: issueType,
+                    resolve: () => db.collection("overviewdata").findOne({})
                 }
             })
         }),
+
 
         mutation: new GraphQLObjectType({
             name: 'Mutation',

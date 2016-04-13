@@ -18,15 +18,34 @@ const StoreQueries = {
     `
 };
 
+const OverviewQueries = {
+    overview: (Component) => Relay.QL`
+    query Query {
+
+            overview { ${Component.getFragment('overview')} }
+
+    }
+    `
+};
+
+const IssuesQueries = {
+    issues: (Component) => Relay.QL`
+    query Query {
+            issues { ${Component.getFragment('issues')} }
+    }
+    `
+};
+
 
 
 const AppRoute = (
 
     <Route path ="/" component={Main}
-        queries={StoreQueries}
+        queries= {StoreQueries}
     >
-        <IndexRoute component={Overview} />
-        <Route path="/issues" component={Issues} />
+        <IndexRoute component={Overview} queries={OverviewQueries} />
+        <Route path="/overview" component={Overview} queries={OverviewQueries} />
+        <Route path="/issues" component={Issues} queries={IssuesQueries} />
         <Route path="/controllist" component={ControlList} />
     </Route>
 

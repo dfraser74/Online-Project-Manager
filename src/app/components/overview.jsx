@@ -33,10 +33,10 @@ class Overview extends React.Component {
             <div className="row" styleName="viewContent">
                 <form className="col s12">
                     <div className="row">
-                        {this.props.children}
+
 
                         <div className="input-field col s12" style={{marginBottom:"25px"}}>
-                            <input id="overview_title" type="text" className="truncate" defaultValue={this.props.overview.exec} ref="newExec" onBlur={this.handleChange} />
+                            <input id="overview_title" type="text" className="truncate" defaultValue={this.props.overview.title} ref="newTitle" onBlur={this.handleChange} />
                                 <label htmlFor="overview_title" className="active">Title</label>
 
                         </div>
@@ -44,28 +44,28 @@ class Overview extends React.Component {
 
 
                         <div className="input-field col s12" style={{marginBottom:"25px"}}>
-                            <input id="overview_description" type="text" className="truncate"> </input>
-                            <label htmlFor="overview_description" >Description</label>
+                            <input id="overview_description" type="text" className="truncate" defaultValue={this.props.overview.description} ref="newDes" > </input>
+                            <label htmlFor="overview_description" className="active">Description</label>
                         </div>
                         <div className="input-field col s12" style={{marginBottom:"25px"}}>
-                            <input id="overview_reference" type="text" className="truncate"> </input>
-                            <label htmlFor="overview_reference" >Reference</label>
+                            <input id="overview_reference" type="text" className="truncate" defaultValue={this.props.overview.reference} ref="newRef" > </input>
+                            <label htmlFor="overview_reference" className="active">Reference</label>
                         </div>
                         <div className="input-field col s12" style={{marginBottom:"25px"}}>
-                            <input id="overview_div" type="text" className="truncate"> </input>
-                            <label htmlFor="overview_div" >Division/Department</label>
+                            <input id="overview_div" type="text" className="truncate" defaultValue={this.props.overview.division} ref="newDiv" > </input>
+                            <label htmlFor="overview_div" className="active">Division/Department</label>
                         </div>
                         <div className="input-field col s12" style={{marginBottom:"25px"}}>
-                            <input id="overview_owner" type="text" className="truncate"> </input>
-                            <label htmlFor="overview_owner" >Owner</label>
+                            <input id="overview_owner" type="text" className="truncate" defaultValue={this.props.overview.owner} ref="newOwner" > </input>
+                            <label htmlFor="overview_owner" className="active">Owner</label>
                         </div>
                         <div className="input-field col s12" style={{marginBottom:"25px"}}>
-                            <input id="overview_exec" type="text" className="truncate"> </input>
-                            <label htmlFor="overview_exec" >Executive Owner</label>
+                            <input id="overview_exec" type="text" className="truncate" defaultValue={this.props.overview.exec} ref="newExec" > </input>
+                            <label htmlFor="overview_exec" className="active">Executive Owner</label>
                         </div>
                         <div className="input-field col s12" style={{marginBottom:"25px"}}>
-                            <input id="overview_assigned" type="text" className="truncate"> </input>
-                            <label htmlFor="overview_assigned" >Assigned Auditor</label>
+                            <input id="overview_assigned" type="text" className="truncate" defaultValue={this.props.overview.assigned} ref="newAssign" > </input>
+                            <label htmlFor="overview_assigned" className="active">Assigned Auditor</label>
                         </div>
 
                         <div>
@@ -96,8 +96,13 @@ Overview = Relay.createContainer(Overview, {
     fragments: {
         overview: () => Relay.QL`
        fragment on Overview {
+            title,
             exec,
-            title
+            description,
+            reference,
+            division,
+            owner,
+            assigned,
        }
        `
     }
