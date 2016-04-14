@@ -7,6 +7,7 @@ import Overview from "../components/overview.jsx";
 import ControlList from "../components/controlList.jsx";
 import Issues from "../components/issues.jsx";
 import Main from "../components/Main.jsx";
+import Homepage from "../components/homepage.jsx";
 
 import Relay from "react-relay";
 
@@ -29,9 +30,9 @@ const OverviewQueries = {
 };
 
 const IssuesQueries = {
-    issues: (Component) => Relay.QL`
+    issuesStore: (Component) => Relay.QL`
     query Query {
-            issues { ${Component.getFragment('issues')} }
+            issuesStore { ${Component.getFragment('issuesStore')} }
     }
     `
 };
@@ -47,6 +48,7 @@ const AppRoute = (
         <Route path="/overview" component={Overview} queries={OverviewQueries} />
         <Route path="/issues" component={Issues} queries={IssuesQueries} />
         <Route path="/controllist" component={ControlList} />
+        <Route path="/home" component={Homepage} />
     </Route>
 
 );

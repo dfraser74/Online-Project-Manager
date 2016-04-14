@@ -8,27 +8,6 @@ import { createHashHistory } from 'history';
 import { useRouterHistory } from 'react-router';
 
 
-
-//class HomeRoute extends Relay.Route {
-//    static routeName = 'Home';
-//    static queries = {
-//        store: (Component)=> Relay.QL`
-//        query Query {
-//            store { ${Component.getFragment('store')} }
-//        }
-//        `
-//    };
-//
-//}
-
-
-//ReactDOM.render(
-//    <Relay.RootContainer
-//        Component = {Main}
-//        route = {new HomeRoute()}
-//    />, document.getElementById('react')
-//);
-
 const history = useRouterHistory(createHashHistory)({ queryKey: false });
 
 ReactDOM.render(

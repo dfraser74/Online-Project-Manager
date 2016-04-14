@@ -21,15 +21,6 @@ class ControlList extends React.Component {
                         <div className="secondary-content valign-wrapper"><i className="material-icons" styleName="email">email</i>
                             <div className="title" styleName="request">Contains Client Request</div> </div>
                     </li>
-                    <li className="collection-item avatar">
-                        <i className="material-icons">label_outline</i>
-                        <span className="title"></span>
-                        <p>Walkthrough <br />
-                            Q1 Testing
-                        </p>
-
-                    </li>
-
 
                 </ul>
             </div>
