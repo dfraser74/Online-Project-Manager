@@ -5,13 +5,15 @@ import IssuesCSS from '../css/issues.css';
 import Issue from "./issue.jsx";
 
 
+
 class Issues extends React.Component {
+
 
     render(){
 
         return (
             <div styleName="viewContent">
-                <ul className="collapsible popout collapsible-accordion" data-collapsible="accordion">
+                <ul className="collapsible popout" data-collapsible="accordion">
                     {this.props.issuesStore.issues.map(
                         issue => <Issue issue={issue} />
                     )}

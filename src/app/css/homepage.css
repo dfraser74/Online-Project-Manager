@@ -1,16 +1,9 @@
-.viewContent {
-    padding-left: 240px;
-    margin: 55px 40px 30px 40px;
+
+.card {
+    margin-top: 20%;
 }
 
-.avatar {
-    margin-top: 12px;
-}
-
-.email {
-    padding-top: 18px;
-}
-
-.request {
-    padding-top: 18px;
+.headerFont {
+    color: #795548;
+    margin-top: 10%;
 }

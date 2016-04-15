@@ -8,6 +8,7 @@ import ControlList from "../components/controlList.jsx";
 import Issues from "../components/issues.jsx";
 import Main from "../components/Main.jsx";
 import Homepage from "../components/homepage.jsx";
+import Root from "../components/root.jsx";
 
 import Relay from "react-relay";
 
@@ -41,14 +42,15 @@ const IssuesQueries = {
 
 const AppRoute = (
 
-    <Route path ="/" component={Main}
-        queries= {StoreQueries}
-    >
-        <IndexRoute component={Overview} queries={OverviewQueries} />
-        <Route path="/overview" component={Overview} queries={OverviewQueries} />
-        <Route path="/issues" component={Issues} queries={IssuesQueries} />
-        <Route path="/controllist" component={ControlList} />
-        <Route path="/home" component={Homepage} />
+    <Route path ="/" component={Root} >
+        <IndexRoute component={Homepage} />
+            <Route path="/main" component={Main} queries= {StoreQueries} >
+                <IndexRoute component={Overview} queries={OverviewQueries} />
+                <Route path="/overview" component={Overview} queries={OverviewQueries} />
+                <Route path="/issues" component={Issues} queries={IssuesQueries} />
+                <Route path="/controllist" component={ControlList} />
+                <Route path="/home" component={Homepage} />
+            </Route>
     </Route>
 
 );
