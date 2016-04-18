@@ -45,7 +45,7 @@ const AppRoute = (
     <Route path ="/" component={Root} >
         <IndexRoute component={Homepage} />
             <Route path="/main" component={Main} queries= {StoreQueries} >
-                <IndexRoute component={Overview} queries={OverviewQueries} />
+                <IndexRoute component={Overview} queries= {OverviewQueries} />
                 <Route path="/overview" component={Overview} queries={OverviewQueries} />
                 <Route path="/issues" component={Issues} queries={IssuesQueries} />
                 <Route path="/controllist" component={ControlList} />

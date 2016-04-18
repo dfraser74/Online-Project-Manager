@@ -20,17 +20,14 @@ import {
     mutationWithClientMutationId
 } from "graphql-relay";
 
+import { ObjectID } from 'mongodb';
 
 let Schema = (db) => {
     class Store {}
     let store = new Store();
     class IssuesStore {}
     let issuesStore = new IssuesStore();
-    let OVT = {
-        _id: "test",
-        title: "test2",
-        exec: "test3"
-    };
+
 
 
     let storeType = new GraphQLObjectType({
@@ -73,7 +70,7 @@ let Schema = (db) => {
     let issuesList = async ()=> {
         let data = await db.collection("overviewdata").findOne({},{issues:1, _id:0});
         return data.issues;
-    }
+    };
 
     let issuesStoreType = new GraphQLObjectType({
        name: 'IssuesStore',
@@ -89,7 +86,12 @@ let Schema = (db) => {
         name: 'CreateOverview',
 
         inputFields:{
-            exec: { type: new GraphQLNonNull(GraphQLString)}
+            description: { type: new GraphQLNonNull(GraphQLString)},
+            exec: { type: new GraphQLNonNull(GraphQLString)},
+            title: { type: new GraphQLNonNull(GraphQLString)},
+            reference: { type: new GraphQLNonNull(GraphQLString)},
+            division: { type: new GraphQLNonNull(GraphQLString)},
+            owner: { type: new GraphQLNonNull(GraphQLString)}
         },
 
         outputFields: {
@@ -99,8 +101,19 @@ let Schema = (db) => {
             }
         },
 
-        mutateAndGetPayload: ({exec}) => {
-            return db.collection("overviewdata").insertOne({exec});
+        mutateAndGetPayload: ({description, exec, title, reference, division, owner}) => {
+            return db.collection("overviewdata").updateOne({'_id': ObjectID('56fa1a9be4b051a95b5c8c26')},
+                {
+                    $set: {
+                        description: description,
+                        exec: exec,
+                        title: title,
+                        reference: reference,
+                        division: division,
+                        owner: owner,
+
+                }}
+            );
         }
     });
 

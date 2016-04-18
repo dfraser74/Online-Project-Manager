@@ -13,14 +13,26 @@ class CreateOverviewMutation extends Relay.Mutation {
 
     getVariables() {
         return {
-            exec: this.props.exec
+            exec: this.props.exec,
+            description: this.props.description,
+            title: this.props.title,
+            reference: this.props.reference,
+            division: this.props.division,
+            owner: this.props.owner,
         };
     }
 
     getFatQuery() {
         return Relay.QL`
         fragment on CreateOverviewPayload {
-            overview { exec }
+            overview {
+            title,
+            exec,
+            description,
+            reference,
+            division,
+            owner,
+             }
         }
         `;
     }
